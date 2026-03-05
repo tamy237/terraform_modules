@@ -1,3 +1,4 @@
+
 resource "aws_db_instance" "db_instance" {
   for_each = var.db_instance
   db_subnet_group_name = each.value.db_subnet_group_name
@@ -11,4 +12,5 @@ resource "aws_db_instance" "db_instance" {
   parameter_group_name = each.value.parameter_group_name
   skip_final_snapshot  = each.value.skip_final_snapshot
   vpc_security_group_ids = each.value.db_security_group_ids
+
 }
