@@ -20,6 +20,19 @@ variable "private_db" {
   type = string
   description = "Map of the private database subnet configuration"
 }
+
+variable "allocation_id" {
+  type = string
+}
+
+variable "private_route_table_name" {
+  type = string
+}
+
+variable "subnet_id" {
+  type = string
+}
+
 variable "ami_type" {
   type = any
 }
@@ -38,5 +51,6 @@ variable "db_instance" {
   type = any
   description = "Configuration for RDS database instance"
 }
+
 
 

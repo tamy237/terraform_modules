@@ -42,10 +42,13 @@ output "private_route_table_id" {
 
 output "private_subnet_route_table_association_id" {
   description = "recuperation de l'id de la route table association du sous reseau privé1"
-  value = aws_route_table_association.private_subnet_route_table_association.id
+    value = {
+    for key, table_route_association in aws_route_table_association.private_associations :
+    key => table_route_association.id
+  }
 }
 
-output "private_db_subnet_route_table_association_id" {
-  description = "recuperation de l'id routage de ce sous reseau prive_db"
-  value = aws_route_table_association.private_db_subnet_route_table_association.id
-}
+# output "private_db_subnet_route_table_association_id" {
+#   description = "recuperation de l'id routage de ce sous reseau prive_db"
+#   value = aws_route_table_association.private_db_subnet_route_table_association.id
+# }

@@ -19,6 +19,9 @@ module "network" {
   # natigw_name                   = module.network.natigw_name
   public_subnets                = var.public_subnets
   private_subnets               = var.private_subnets
+  allocation_id                 = var.allocation_id
+  private_route_table_name      = var.private_route_table_name
+  subnet_id                       = var.subnet_id
 }
 
 module "ami" {
