@@ -5,3 +5,4 @@ environnements/dev/.terraform/
 *.tfstate.*
 crash.log
 .terraform.lock.hcl
+dev.tfvars
