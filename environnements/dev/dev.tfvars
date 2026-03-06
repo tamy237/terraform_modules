@@ -32,22 +32,22 @@ ami_type = {
     }
 }
 
-# instances = {
-#   ec2_instances = {
-#     frontend_instance = {
-#       instance_name      = "frontend_instance"
-#       instance_type      = "t2.micro"
-#       subnet_key         = "public_app"
-#       sg_key             = "frontend_sg_dev"
-#     }
-#     backend_instance = {
-#       instance_name      = "backend_instance"
-#       instance_type      = "t2.micro"
-#       subnet_key         = "private_app"
-#       sg_key             = "backend_sg"
-#     }
-#   }
-# }
+instances = {
+  ec2_instances = {
+    frontend_instance = {
+      instance_name      = "frontend_instance"
+      instance_type      = "t2.micro"
+      subnet_key         = "public_app"
+      sg_key             = "frontend_sg_dev"
+    }
+    backend_instance = {
+      instance_name      = "backend_instance"
+      instance_type      = "t2.micro"
+      subnet_key         = "private_app"
+      sg_key             = "backend_sg"
+    }
+  }
+}
 
 security_groups = {
   
@@ -130,3 +130,15 @@ db_instance = {
     subnet_db_id = "private_db_dev"
   }
 }
+
+alb_appli = {
+  frontend_alb = {
+    internal = false
+    load_balancer_type = "application"
+    security_group_ids = ["frontend_sg_dev"]
+    subnet_id = ["public_app", "private_app"]
+    enable_deletion_protection = true
+    environment = "dev"
+  }
+}
+

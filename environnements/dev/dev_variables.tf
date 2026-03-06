@@ -37,10 +37,10 @@ variable "ami_type" {
   type = any
 }
 
-# variable "instances" {
-#   type = any
-#   description = "Map of EC2 instance configurations"
-# }
+variable "instances" {
+  type = any
+  description = "Map of EC2 instance configurations"
+}
 
 variable "security_groups" {
   type = any
@@ -52,5 +52,19 @@ variable "db_instance" {
   description = "Configuration for RDS database instance"
 }
 
+variable "alb_appli" {
+  type = any
+  description = "Map of Application Load Balancer configurations"
+}
 
+variable "albname" {
+  type = string
+}
+variable "vpc_id" {
+  type = string
+}
+# variable "target_instances" {
+#   type = any
+#   description = "List of target instance IDs for the load balancer"
+# }
 

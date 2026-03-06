@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 5.0"
-    }
-  }
-}
 
 provider "aws" {
   region = "us-west-1"
@@ -69,7 +61,18 @@ module "db_instance_id" {
   db_instance = var.db_instance
 }
 
-
+module "alb" {
+  source = "../../modules/elb"
+  albname = "alb-instance"
+  alb_appli = var.alb_appli
+  vpc_id = module.network.vpc_id
+  # subnet_id = [ module.network.public_subnet_id["public_app"] ]
+  # security_group_ids = [module.sg.security_group_ids["frontend_sg"]]
+  target_instances = {
+    frontend_instance = module.ec2_instances.instance_ids["frontend_instance"]
+    # backend_instance = module.ec2_instances.instance_ids["backend_instance"]}
+  }
+}
 # module "ec2_backend" {
 #   source = "./modules/ec2"
 #   subnet_id          = module.network.private_subnet_id
